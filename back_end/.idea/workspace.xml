@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="6c23454b-beb9-4da9-bb4b-1d7447458782" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/swp_group4/back_end/controllers/ManageConstructionOrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swp_group4/back_end/controllers/ManageConstructionOrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/swp_group4/back_end/entities/Quotation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swp_group4/back_end/entities/Quotation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/swp_group4/back_end/enums/DesignStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swp_group4/back_end/enums/DesignStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/swp_group4/back_end/enums/QuotationStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swp_group4/back_end/enums/QuotationStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/swp_group4/back_end/mapper/ConstructionOrderMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swp_group4/back_end/mapper/ConstructionOrderMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/swp_group4/back_end/repositories/QuotationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swp_group4/back_end/repositories/QuotationRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/swp_group4/back_end/responses/ConstructOrderDetailForManagerResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swp_group4/back_end/responses/ConstructOrderDetailForManagerResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/swp_group4/back_end/services/DesignService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swp_group4/back_end/services/DesignService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/swp_group4/back_end/services/ManageConstructionOrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swp_group4/back_end/services/ManageConstructionOrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/swp_group4/back_end/services/QuotationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swp_group4/back_end/services/QuotationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/swp_group4/back_end/services/StaffService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swp_group4/back_end/services/StaffService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/swp_group4/back_end/mapper/ConstructionOrderMapperImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/swp_group4/back_end/mapper/ConstructionTasksMapperImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/swp_group4/back_end/mapper/CustomerMapperImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/swp_group4/back_end/mapper/DesignMapperImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/swp_group4/back_end/mapper/MaintenanceOrderMapperImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/swp_group4/back_end/mapper/PaymentMapperImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/swp_group4/back_end/mapper/QuotationMapperImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/swp_group4/back_end/mapper/StaffMapperImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front_end/src/Components/Request/Request.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front_end/src/Components/Request/Request.jsx" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2nBiO9lib7fujhelAyTR9JMQjHc" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.BackEndApplication.executor": "Run",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/Koi-pond-construction-management-system/back_end",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="BackEndApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="back_end" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.swp_group4.back_end.BackEndApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.21829.142" />
+        <option value="bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-IU-242.21829.142" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6c23454b-beb9-4da9-bb4b-1d7447458782" name="Changes" comment="" />
+      <created>1728452836499</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1728452836499</updated>
+      <workItem from="1728452838496" duration="403000" />
+      <workItem from="1728453356420" duration="2242000" />
+      <workItem from="1728455618967" duration="1232000" />
+      <workItem from="1728457652508" duration="1288000" />
+      <workItem from="1728462613159" duration="10869000" />
+      <workItem from="1728480082622" duration="1071000" />
+      <workItem from="1728481216817" duration="243000" />
+      <workItem from="1728481480446" duration="203000" />
+      <workItem from="1728481845056" duration="1239000" />
+      <workItem from="1728483155762" duration="1874000" />
+      <workItem from="1728529584862" duration="21000" />
+      <workItem from="1728529619039" duration="276000" />
+      <workItem from="1728530049569" duration="3000" />
+      <workItem from="1728530063900" duration="737000" />
+      <workItem from="1728530971489" duration="316000" />
+      <workItem from="1728539406880" duration="303000" />
+      <workItem from="1728541688534" duration="1670000" />
+      <workItem from="1728545570426" duration="50000" />
+      <workItem from="1728546948875" duration="203000" />
+      <workItem from="1728547932341" duration="2738000" />
+      <workItem from="1728550737451" duration="3376000" />
+      <workItem from="1728570896059" duration="8218000" />
+      <workItem from="1728584237636" duration="2356000" />
+      <workItem from="1728624802492" duration="2358000" />
+      <workItem from="1728629498703" duration="3229000" />
+      <workItem from="1728642088541" duration="187000" />
+      <workItem from="1728652692716" duration="7909000" />
+      <workItem from="1728666475435" duration="5005000" />
+      <workItem from="1728671542713" duration="1000" />
+      <workItem from="1728675893453" duration="1124000" />
+      <workItem from="1728712860174" duration="5768000" />
+      <workItem from="1728724573022" duration="21503000" />
+      <workItem from="1728763552561" duration="2451000" />
+      <workItem from="1728832504907" duration="4543000" />
+      <workItem from="1728842725369" duration="350000" />
+      <workItem from="1728843441442" duration="3351000" />
+      <workItem from="1728877873742" duration="3258000" />
+      <workItem from="1728883757309" duration="1980000" />
+      <workItem from="1728891303123" duration="982000" />
+      <workItem from="1728892678735" duration="28000" />
+      <workItem from="1728893543172" duration="2390000" />
+      <workItem from="1728924633836" duration="6063000" />
+      <workItem from="1728985543781" duration="7333000" />
+      <workItem from="1729000111608" duration="5039000" />
+      <workItem from="1729046998693" duration="3035000" />
+      <workItem from="1729056435177" duration="7656000" />
+      <workItem from="1729101251952" duration="4897000" />
+      <workItem from="1729145266054" duration="1317000" />
+      <workItem from="1729154435460" duration="3883000" />
+      <workItem from="1729188878662" duration="124000" />
+      <workItem from="1729228105757" duration="1471000" />
+      <workItem from="1729248847090" duration="17620000" />
+      <workItem from="1729268095392" duration="6615000" />
+      <workItem from="1729278401206" duration="915000" />
+      <workItem from="1729287256273" duration="2326000" />
+      <workItem from="1729317046175" duration="2429000" />
+      <workItem from="1729321235972" duration="613000" />
+      <workItem from="1729322409171" duration="15000" />
+      <workItem from="1729323005382" duration="659000" />
+      <workItem from="1729405255910" duration="5813000" />
+      <workItem from="1729411682533" duration="11244000" />
+      <workItem from="1729424128130" duration="7166000" />
+      <workItem from="1729435560756" duration="118000" />
+      <workItem from="1729438574876" duration="1710000" />
+      <workItem from="1729444931009" duration="1902000" />
+      <workItem from="1729480541242" duration="1149000" />
+      <workItem from="1729485986408" duration="4677000" />
+      <workItem from="1729499122631" duration="2299000" />
+      <workItem from="1729572084920" duration="21219000" />
+      <workItem from="1729610841738" duration="3034000" />
+      <workItem from="1729661891605" duration="2187000" />
+      <workItem from="1729668092500" duration="170000" />
+      <workItem from="1729841432252" duration="8486000" />
+      <workItem from="1729854515594" duration="10955000" />
+      <workItem from="1729878134864" duration="8334000" />
+      <workItem from="1729911808776" duration="4394000" />
+      <workItem from="1729921444675" duration="2018000" />
+      <workItem from="1729924070304" duration="1985000" />
+      <workItem from="1729960812348" duration="3274000" />
+      <workItem from="1729965548777" duration="6415000" />
+      <workItem from="1730010514285" duration="426000" />
+      <workItem from="1730016794456" duration="18497000" />
+      <workItem from="1730045670961" duration="1512000" />
+      <workItem from="1730050687020" duration="1941000" />
+      <workItem from="1730085567648" duration="1186000" />
+      <workItem from="1730086809572" duration="3727000" />
+      <workItem from="1730090896265" duration="682000" />
+      <workItem from="1730093243069" duration="2172000" />
+      <workItem from="1730096055895" duration="1566000" />
+      <workItem from="1730097642830" duration="1863000" />
+      <workItem from="1730100690971" duration="753000" />
+      <workItem from="1730102861004" duration="1151000" />
+      <workItem from="1730104033457" duration="3321000" />
+      <workItem from="1730110000189" duration="633000" />
+      <workItem from="1730178373753" duration="14567000" />
+      <workItem from="1730228392541" duration="2964000" />
+      <workItem from="1730231424652" duration="233000" />
+      <workItem from="1730231689930" duration="14000" />
+      <workItem from="1730231726279" duration="502000" />
+      <workItem from="1730255437811" duration="5033000" />
+      <workItem from="1730267092302" duration="3272000" />
+      <workItem from="1730287410903" duration="9054000" />
+      <workItem from="1730306128734" duration="3086000" />
+      <workItem from="1730309454922" duration="1000" />
+      <workItem from="1730342329978" duration="916000" />
+      <workItem from="1730343642434" duration="2868000" />
+      <workItem from="1730347596134" duration="825000" />
+      <workItem from="1730350158805" duration="19000" />
+      <workItem from="1730350182668" duration="243000" />
+      <workItem from="1730354060276" duration="1792000" />
+      <workItem from="1730357932239" duration="214000" />
+      <workItem from="1730358156634" duration="111000" />
+      <workItem from="1730360363323" duration="331000" />
+      <workItem from="1730362244830" duration="952000" />
+      <workItem from="1730367304741" duration="685000" />
+      <workItem from="1730876267184" duration="20000" />
+      <workItem from="1731435391821" duration="6788000" />
+      <workItem from="1731503717780" duration="1723000" />
+      <workItem from="1731507082355" duration="5075000" />
+      <workItem from="1731512645014" duration="3933000" />
+      <workItem from="1731518450157" duration="2171000" />
+      <workItem from="1731521309428" duration="3589000" />
+      <workItem from="1731529652192" duration="6452000" />
+      <workItem from="1731555297435" duration="7808000" />
+      <workItem from="1731563955104" duration="1366000" />
+      <workItem from="1731568386667" duration="4396000" />
+      <workItem from="1731753949381" duration="54000" />
+      <workItem from="1731754017659" duration="145000" />
+      <workItem from="1731754177472" duration="12115000" />
+      <workItem from="1731770511549" duration="3701000" />
+      <workItem from="1731774584311" duration="1968000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
