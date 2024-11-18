@@ -19,12 +19,22 @@ public class PaymentOrder {
     @GeneratedValue(strategy = GenerationType.UUID)
     String paymentId;
     String paymentTitle;
-    String orderId;
-    String customerId;
     LocalDateTime paidDate;
     LocalDateTime dueDate;
     PaymentMethods paymentMethods;
     Long total;
     @Enumerated(EnumType.STRING)
     PaymentStatus status;
+
+    @ManyToOne
+    @JoinColumn(name = "customer_id", nullable = false)
+    Customer customer;
+
+    @ManyToOne
+    @JoinColumn(name = "construction_order_id")
+    ConstructionOrder constructionOrder;
+
+    @OneToOne
+    @JoinColumn(name = "maintenance_order_id")
+    MaintenanceOrder maintenanceOrder;
 }

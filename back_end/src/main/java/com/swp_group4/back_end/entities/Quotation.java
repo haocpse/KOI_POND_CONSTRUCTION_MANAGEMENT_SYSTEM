@@ -23,10 +23,6 @@ public class Quotation {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     String quotationId;
-    @Enumerated(EnumType.STRING)
-    QuotationBatch batch;
-    @Enumerated(EnumType.STRING)
-    PaymentStatus paymentStatus;
     double length;
     double width;
     double height;
@@ -34,7 +30,6 @@ public class Quotation {
     double percentageStage1;
     double percentageStage2;
     double percentageStage3;
-    String promotionId;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "package_id")

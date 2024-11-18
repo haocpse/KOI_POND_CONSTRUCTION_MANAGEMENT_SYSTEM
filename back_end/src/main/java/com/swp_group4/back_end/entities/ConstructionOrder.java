@@ -7,6 +7,7 @@ import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -54,4 +55,9 @@ public class ConstructionOrder {
     @Enumerated(EnumType.STRING)
     ConstructionOrderStatus status;
 
+    @OneToMany(mappedBy = "constructionOrder", cascade = CascadeType.ALL, orphanRemoval = true)
+    List<ConstructionTasks> tasks;
+
+    @OneToMany(mappedBy = "constructionOrder", cascade = CascadeType.ALL, orphanRemoval = true)
+    List<PaymentOrder> paymentOrders;
 }

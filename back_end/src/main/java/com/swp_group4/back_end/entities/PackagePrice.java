@@ -1,9 +1,6 @@
 package com.swp_group4.back_end.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -17,8 +14,11 @@ public class PackagePrice {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     String packagePriceId;
-    String packageId;
     double minVolume;
     double maxVolume;
     double price;
+
+    @ManyToOne
+    @JoinColumn(name = "package_id", nullable = false)
+    Packages packages;
 }
