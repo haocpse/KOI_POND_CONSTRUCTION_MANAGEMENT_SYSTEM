@@ -69,44 +69,44 @@ public class PaymentController {
     }
 
     //hàm callback lại web khi hoàn thành thanh toán
-    @GetMapping("/vnpayCallback")
-    public void vnPayCallback(HttpServletResponse response, @RequestParam Map<String, String> allParams) {
-        try {
-            log.info("VNPay callback received with params: {}", allParams);
-            String vnpResponseCode = allParams.get("vnp_ResponseCode");
-            String paymentId = allParams.get("vnp_TxnRef");
-            String orderId = paymentService.findOrderId(paymentId);
-            PaymentOrder paymentOrder = paymentOrderRepository.findById(paymentId).orElse(null);
-            if ("00".equals(vnpResponseCode)) {
-                assert paymentOrder != null;
-                paymentOrder.setStatus(PaymentStatus.SUCCESS);
-                paymentOrder.setPaidDate(LocalDateTime.now());
-                paymentOrderRepository.save(paymentOrder);
-                if(constructOrderRepository.findById(orderId).isPresent()) {
-                    paymentService.successPaid(orderId);
-                    response.sendRedirect("http://localhost:3000/myInfo/orders/" + orderId + "/payments");
-                }
-                else {
-                    MaintenanceOrder order = maintenanceOrderRepository.findById(orderId).orElse(null);
-                    assert order != null;
-                    order.setStatus(MaintenanceOrderStatus.FINISHED);
-                    maintenanceOrderRepository.save(order);
-                    response.sendRedirect("http://localhost:3000/myInfo/orders/maintenance/");
-                }
-            } else {
-                assert paymentOrder != null;
-                paymentOrder.setStatus(PaymentStatus.FAILED);
-                paymentOrderRepository.save(paymentOrder);
-                paymentService.reCreatePayment(paymentId);
-                if(constructOrderRepository.findById(orderId).isPresent())
-                    response.sendRedirect("http://localhost:3000/myInfo/orders/" + orderId + "/payments");
-                else
-                    response.sendRedirect("http://localhost:3000/myInfo/orders/maintenance/");
-            }
-        } catch (Exception e) {
-            log.error("Error in VNPay callback: {}", e.getMessage());
-        }
-    }
+//    @GetMapping("/vnpayCallback")
+//    public void vnPayCallback(HttpServletResponse response, @RequestParam Map<String, String> allParams) {
+//        try {
+//            log.info("VNPay callback received with params: {}", allParams);
+//            String vnpResponseCode = allParams.get("vnp_ResponseCode");
+//            String paymentId = allParams.get("vnp_TxnRef");
+//            String orderId = paymentService.findOrderId(paymentId);
+//            PaymentOrder paymentOrder = paymentOrderRepository.findById(paymentId).orElse(null);
+//            if ("00".equals(vnpResponseCode)) {
+//                assert paymentOrder != null;
+//                paymentOrder.setStatus(PaymentStatus.SUCCESS);
+//                paymentOrder.setPaidDate(LocalDateTime.now());
+//                paymentOrderRepository.save(paymentOrder);
+//                if(constructOrderRepository.findById(orderId).isPresent()) {
+//                    paymentService.successPaid(orderId);
+//                    response.sendRedirect("http://localhost:3000/myInfo/orders/" + orderId + "/payments");
+//                }
+//                else {
+//                    MaintenanceOrder order = maintenanceOrderRepository.findById(orderId).orElse(null);
+//                    assert order != null;
+//                    order.setStatus(MaintenanceOrderStatus.FINISHED);
+//                    maintenanceOrderRepository.save(order);
+//                    response.sendRedirect("http://localhost:3000/myInfo/orders/maintenance/");
+//                }
+//            } else {
+//                assert paymentOrder != null;
+//                paymentOrder.setStatus(PaymentStatus.FAILED);
+//                paymentOrderRepository.save(paymentOrder);
+//                paymentService.reCreatePayment(paymentId);
+//                if(constructOrderRepository.findById(orderId).isPresent())
+//                    response.sendRedirect("http://localhost:3000/myInfo/orders/" + orderId + "/payments");
+//                else
+//                    response.sendRedirect("http://localhost:3000/myInfo/orders/maintenance/");
+//            }
+//        } catch (Exception e) {
+//            log.error("Error in VNPay callback: {}", e.getMessage());
+//        }
+//    }
 
     //hàm khi customer nhấn sẽ redirect sang trang VNPAY để thanh toán
     @PostMapping("/maintenance/{paymentId}")

@@ -9,6 +9,6 @@ import java.util.List;
 @Repository
 public interface PackageConstructionRepository extends JpaRepository<PackageConstruction, String> {
 
-    List<PackageConstruction> findByPackageId(String packageId);
+
 
 }

@@ -29,7 +29,6 @@ public class QuotationMapperImpl implements QuotationMapper {
         quotation.setPercentageStage1( request.getPercentageStage1() );
         quotation.setPercentageStage2( request.getPercentageStage2() );
         quotation.setPercentageStage3( request.getPercentageStage3() );
-        quotation.setPromotionId( request.getPromotionId() );
 
         return quotation;
     }

@@ -48,8 +48,7 @@ public class PaymentService {
         String title = paymentOrder.getPaymentTitle();
         paymentOrderRepository.delete(paymentOrder);
         PaymentOrder paymentOrder1 = PaymentOrder.builder()
-                .orderId(paymentOrder.getOrderId())
-                .customerId(paymentOrder.getCustomerId())
+
                 .paymentTitle(title)
                 .dueDate(LocalDateTime.now().plusDays(7))
                 .paymentMethods(PaymentMethods.VNPAY)
@@ -63,8 +62,8 @@ public class PaymentService {
         MaintenanceOrder order = maintenanceOrderRepository.findById(orderId).orElseThrow();
         order.setStatus(MaintenanceOrderStatus.PAYMENT_CREATED);
         PaymentOrder paymentOrder = PaymentOrder.builder()
-                .customerId(request.getAccountId())
-                .orderId(orderId)
+
+
                 .paymentMethods(PaymentMethods.VNPAY)
                 .status(PaymentStatus.PENDING)
                 .total(request.getTotalPrice())
@@ -73,9 +72,6 @@ public class PaymentService {
         return paymentOrderRepository.save(paymentOrder);
     }
 
-    public List<PaymentOrder> listALl(String accountId){
-        return paymentOrderRepository.findByCustomerIdAndStatus(accountId, PaymentStatus.PENDING);
-    }
 
     public String createVnPayPayment(HttpServletRequest request, String paymentId) {
         long amount = Integer.parseInt(request.getParameter("amount")) * 100L;
@@ -93,9 +89,6 @@ public class PaymentService {
         return vnPayConfig.getVnp_PayUrl() + "?" + queryUrl;
     }
 
-    public String findOrderId(String paymentId) {
-        return paymentOrderRepository.findById(paymentId).orElseThrow().getOrderId();
-    }
 
     public void successPaid(String orderId) {
         ConstructionOrder order = constructOrderRepository.findById(orderId).orElseThrow();

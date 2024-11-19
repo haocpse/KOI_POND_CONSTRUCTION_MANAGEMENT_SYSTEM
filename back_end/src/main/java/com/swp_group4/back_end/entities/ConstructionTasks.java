@@ -7,6 +7,7 @@ import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -31,5 +32,8 @@ public class ConstructionTasks {
     @ManyToOne
     @JoinColumn(name = "package_construction_id", nullable = false)
     PackageConstruction packageConstruction;
+
+    @OneToMany(mappedBy = "task", cascade = CascadeType.ALL)
+    List<ConstructionTaskStaff> staffTasks;
 
 }

@@ -52,7 +52,7 @@ public class PackageService {
         packageRepository.save(packages);
         for (PackagePriceRequest priceRequest : request.getPackagePrices()) {
             PackagePrice packagePrice = PackagePrice.builder()
-                    .packageId(packages.getPackageId())
+
                     .minVolume(priceRequest.getMinVolume())
                     .maxVolume(priceRequest.getMaxVolume())
                     .price(priceRequest.getPrice())
@@ -71,84 +71,55 @@ public class PackageService {
         return packages;
     }
 
-    public Packages updatePackage(String packageId, PackageCreateRequest request) {
-        Optional<Packages> existingPackageOpt = packageRepository.findById(packageId);
-        if (existingPackageOpt.isPresent()) {
-            Packages packages = existingPackageOpt.get();
-            packages.setPackageType(request.getPackageType());
-            packageRepository.save(packages);
-
-            List<PackagePrice> existingPrices = packagePriceRepository.findPackagePriceByPackageId(packageId);
-            List<PackagePriceRequest> incomingPrices = request.getPackagePrices();
-
-            for (PackagePriceRequest priceRequest : incomingPrices) {
-                Optional<PackagePrice> existingPriceOpt = existingPrices.stream()
-                        .filter(p -> p.getMinVolume() == priceRequest.getMinVolume() &&
-                                p.getMaxVolume() == priceRequest.getMaxVolume())
-                        .findFirst();
-
-                if (existingPriceOpt.isPresent()) {
-                    PackagePrice existingPrice = existingPriceOpt.get();
-                    existingPrice.setPrice(priceRequest.getPrice());
-                    packagePriceRepository.save(existingPrice);
-                } else {
-                    PackagePrice newPrice = PackagePrice.builder()
-                            .packageId(packageId)
-                            .minVolume(priceRequest.getMinVolume())
-                            .maxVolume(priceRequest.getMaxVolume())
-                            .price(priceRequest.getPrice())
-                            .build();
-                    packagePriceRepository.save(newPrice);
-                }
-            }
-
-            List<PackagePrice> pricesToDelete = existingPrices.stream()
-                    .filter(p -> incomingPrices.stream().noneMatch(
-                            priceReq -> priceReq.getMinVolume() == p.getMinVolume() &&
-                                    priceReq.getMaxVolume() == p.getMaxVolume()))
-                    .collect(Collectors.toList());
-            packagePriceRepository.deleteAll(pricesToDelete);
-
-//            List<PackageConstruction> existingConstructions = packageConstructionRepository.findByPackageId(packageId);
-//            List<PackageConstructionRequest> incomingConstructions = request.getPackageConstructions();
+//    public Packages updatePackage(String packageId, PackageCreateRequest request) {
+//        Optional<Packages> existingPackageOpt = packageRepository.findById(packageId);
+//        if (existingPackageOpt.isPresent()) {
+//            Packages packages = existingPackageOpt.get();
+//            packages.setPackageType(request.getPackageType());
+//            packageRepository.save(packages);
 //
-//            for (PackageConstructionRequest constructionRequest : incomingConstructions) {
-//                Optional<PackageConstruction> existingConstructionOpt = existingConstructions.stream()
-//                        .filter(c -> c.getContent().equals(constructionRequest.getContent()))
-//                        .findFirst();
+//            List<PackagePrice> existingPrices = packagePriceRepository.findPackagePriceByPackageId(packageId);
+//            List<PackagePriceRequest> incomingPrices = request.getPackagePrices();
 //
-//                if (existingConstructionOpt.isPresent()) {
-//                    PackageConstruction existingConstruction = existingConstructionOpt.get();
-//                    packageConstructionRepository.save(existingConstruction);
+//
+//                if (existingPriceOpt.isPresent()) {
+//                    PackagePrice existingPrice = existingPriceOpt.get();
+//                    existingPrice.setPrice(priceRequest.getPrice());
+//                    packagePriceRepository.save(existingPrice);
 //                } else {
-//                    PackageConstruction newConstruction = PackageConstruction.builder()
-//                            .packageId(packageId)
-//                            .content(constructionRequest.getContent())
+//                    PackagePrice newPrice = PackagePrice.builder()
+//
+//                            .minVolume(priceRequest.getMinVolume())
+//                            .maxVolume(priceRequest.getMaxVolume())
+//                            .price(priceRequest.getPrice())
 //                            .build();
-//                    packageConstructionRepository.save(newConstruction);
+//                    packagePriceRepository.save(newPrice);
 //                }
 //            }
 //
-//            List<PackageConstruction> constructionsToDelete = existingConstructions.stream()
-//                    .filter(c -> incomingConstructions.stream().noneMatch(
-//                            consReq -> consReq.getContent().equals(c.getContent())))
+//            List<PackagePrice> pricesToDelete = existingPrices.stream()
+//                    .filter(p -> incomingPrices.stream().noneMatch(
+//                            priceReq -> priceReq.getMinVolume() == p.getMinVolume() &&
+//                                    priceReq.getMaxVolume() == p.getMaxVolume()))
 //                    .collect(Collectors.toList());
-//            packageConstructionRepository.deleteAll(constructionsToDelete);
+//            packagePriceRepository.deleteAll(pricesToDelete);
 
-            return packages;
-        } else {
-            throw new RuntimeException("Package not found with id: " + packageId);
-        }
-    }
 
-    public Packages deletePackage(String packageId) {
-        Packages packageToDelete = packageRepository.findById(packageId)
-                .orElseThrow(() -> new RuntimeException("Package not found with id: " + packageId));
-        List<PackagePrice> packagePricesToDelete = packagePriceRepository.findPackagePriceByPackageId(packageId);
-        packagePriceRepository.deleteAll(packagePricesToDelete);
-        packageRepository.deleteById(packageId);
-        return packageToDelete;
-    }
+
+//            return packages;
+//        } else {
+//            throw new RuntimeException("Package not found with id: " + packageId);
+//        }
+//    }
+//
+//    public Packages deletePackage(String packageId) {
+//        Packages packageToDelete = packageRepository.findById(packageId)
+//                .orElseThrow(() -> new RuntimeException("Package not found with id: " + packageId));
+//        List<PackagePrice> packagePricesToDelete = packagePriceRepository.findPackagePriceByPackageId(packageId);
+//        packagePriceRepository.deleteAll(packagePricesToDelete);
+//        packageRepository.deleteById(packageId);
+//        return packageToDelete;
+//    }
 
     public PackageDetailResponse detailPackage() {
         List<Packages> packagesList = packageRepository.findAll();
@@ -159,120 +130,120 @@ public class PackageService {
                 .build();
     }
 
-    public Packages updateConstructionPackage(String packageId, PackageConstructionCreateRequest request) {
-        List<PackageConstruction> existingConstructions = packageConstructionRepository.findByPackageId(packageId);
-        List<PackageConstructionRequest> incomingConstructions = request.getPackageConstructions();
-        for (PackageConstructionRequest constructionRequest : incomingConstructions) {
-            Optional<PackageConstruction> existingConstructionOpt = existingConstructions.stream()
-                    .filter(c -> c.getContent().equals(constructionRequest.getContent()))
-                    .findFirst();
+//    public Packages updateConstructionPackage(String packageId, PackageConstructionCreateRequest request) {
+//        List<PackageConstruction> existingConstructions = packageConstructionRepository.findByPackageId(packageId);
+//        List<PackageConstructionRequest> incomingConstructions = request.getPackageConstructions();
+//        for (PackageConstructionRequest constructionRequest : incomingConstructions) {
+//            Optional<PackageConstruction> existingConstructionOpt = existingConstructions.stream()
+//                    .filter(c -> c.getContent().equals(constructionRequest.getContent()))
+//                    .findFirst();
+//
+//            if (existingConstructionOpt.isPresent()) {
+//                PackageConstruction existingConstruction = existingConstructionOpt.get();
+//                existingConstruction.setPrice(constructionRequest.getPrice());
+//                packageConstructionRepository.save(existingConstruction);
+//            } else {
+//                PackageConstruction newConstruction = PackageConstruction.builder()
+//
+//                        .content(constructionRequest.getContent())
+//                        .price(constructionRequest.getPrice())
+//                        .build();
+//                packageConstructionRepository.save(newConstruction);
+//            }
+//        }
+//
+//        List<PackageConstruction> constructionsToDelete = existingConstructions.stream()
+//                .filter(c -> incomingConstructions.stream().noneMatch(
+//                        consReq -> consReq.getContent().equals(c.getContent())))
+//                .collect(Collectors.toList());
+//        packageConstructionRepository.deleteAll(constructionsToDelete);
+//        return packageRepository.findById(packageId)
+//                .orElseThrow(() -> new RuntimeException("Package not found with id: " + packageId));
+//    }
 
-            if (existingConstructionOpt.isPresent()) {
-                PackageConstruction existingConstruction = existingConstructionOpt.get();
-                existingConstruction.setPrice(constructionRequest.getPrice());
-                packageConstructionRepository.save(existingConstruction);
-            } else {
-                PackageConstruction newConstruction = PackageConstruction.builder()
-                        .packageId(packageId)
-                        .content(constructionRequest.getContent())
-                        .price(constructionRequest.getPrice())
-                        .build();
-                packageConstructionRepository.save(newConstruction);
-            }
-        }
+//    public List<PackagePriceResponse> getAllPackagePrices() {
+//        List<Packages> packages = packageRepository.findAll();
+//        List<PackagePriceResponse> responses = new ArrayList<>();
+//        for (Packages pkg : packages) {
+//            List<PackagePrice> packagePrices = packagePriceRepository.findPackagePriceByPackageId(pkg.getPackageId());
+//            List<PackagePriceInfoResponse> infoResponses = new ArrayList<>();
+//            for (PackagePrice packagePrice : packagePrices) {
+//                PackagePriceInfoResponse infoResponse = PackagePriceInfoResponse.builder()
+//                        .packagePriceId(packagePrice.getPackagePriceId())
+//                        .maxVolume(packagePrice.getMaxVolume())
+//                        .minVolume(packagePrice.getMinVolume())
+//                        .price(packagePrice.getPrice())
+//                        .build();
+//                infoResponses.add(infoResponse);
+//            }
+//            PackagePriceResponse response = PackagePriceResponse.builder()
+//                    .packageId(pkg.getPackageId())
+//                    .packageType(pkg.getPackageType())
+//                    .packagePriceInfoResponseList(infoResponses)
+//                    .build();
+//            responses.add(response);
+//        }
+//        return responses;
+//    }
 
-        List<PackageConstruction> constructionsToDelete = existingConstructions.stream()
-                .filter(c -> incomingConstructions.stream().noneMatch(
-                        consReq -> consReq.getContent().equals(c.getContent())))
-                .collect(Collectors.toList());
-        packageConstructionRepository.deleteAll(constructionsToDelete);
-        return packageRepository.findById(packageId)
-                .orElseThrow(() -> new RuntimeException("Package not found with id: " + packageId));
-    }
+//    public List<PackageConstructionResponse> getAllPackageConstruction() {
+//        List<Packages> packages = packageRepository.findAll();
+//        List<PackageConstructionResponse> responses = new ArrayList<>();
+//        for (Packages pkg : packages) {
+//            List<PackageConstruction> packageConstructions = packageConstructionRepository.findByPackageId(pkg.getPackageId());
+//            List<PackageConstructionInfoResponse> infoResponses = new ArrayList<>();
+//            for (PackageConstruction packageConstruction : packageConstructions) {
+//                PackageConstructionInfoResponse infoResponse = PackageConstructionInfoResponse.builder()
+//                        .packageConstructionId(packageConstruction.getPackageConstructionId())
+//                        .content(packageConstruction.getContent())
+//                        .price(packageConstruction.getPrice())
+//                        .build();
+//                infoResponses.add(infoResponse);
+//            }
+//            PackageConstructionResponse response = PackageConstructionResponse.builder()
+//                    .packageId(pkg.getPackageId())
+//                    .packageType(pkg.getPackageType())
+//                    .constructionInfoResponseList(infoResponses)
+//                    .build();
+//            responses.add(response);
+//        }
+//        return responses;
+//    }
 
-    public List<PackagePriceResponse> getAllPackagePrices() {
-        List<Packages> packages = packageRepository.findAll();
-        List<PackagePriceResponse> responses = new ArrayList<>();
-        for (Packages pkg : packages) {
-            List<PackagePrice> packagePrices = packagePriceRepository.findPackagePriceByPackageId(pkg.getPackageId());
-            List<PackagePriceInfoResponse> infoResponses = new ArrayList<>();
-            for (PackagePrice packagePrice : packagePrices) {
-                PackagePriceInfoResponse infoResponse = PackagePriceInfoResponse.builder()
-                        .packagePriceId(packagePrice.getPackagePriceId())
-                        .maxVolume(packagePrice.getMaxVolume())
-                        .minVolume(packagePrice.getMinVolume())
-                        .price(packagePrice.getPrice())
-                        .build();
-                infoResponses.add(infoResponse);
-            }
-            PackagePriceResponse response = PackagePriceResponse.builder()
-                    .packageId(pkg.getPackageId())
-                    .packageType(pkg.getPackageType())
-                    .packagePriceInfoResponseList(infoResponses)
-                    .build();
-            responses.add(response);
-        }
-        return responses;
-    }
-
-    public List<PackageConstructionResponse> getAllPackageConstruction() {
-        List<Packages> packages = packageRepository.findAll();
-        List<PackageConstructionResponse> responses = new ArrayList<>();
-        for (Packages pkg : packages) {
-            List<PackageConstruction> packageConstructions = packageConstructionRepository.findByPackageId(pkg.getPackageId());
-            List<PackageConstructionInfoResponse> infoResponses = new ArrayList<>();
-            for (PackageConstruction packageConstruction : packageConstructions) {
-                PackageConstructionInfoResponse infoResponse = PackageConstructionInfoResponse.builder()
-                        .packageConstructionId(packageConstruction.getPackageConstructionId())
-                        .content(packageConstruction.getContent())
-                        .price(packageConstruction.getPrice())
-                        .build();
-                infoResponses.add(infoResponse);
-            }
-            PackageConstructionResponse response = PackageConstructionResponse.builder()
-                    .packageId(pkg.getPackageId())
-                    .packageType(pkg.getPackageType())
-                    .constructionInfoResponseList(infoResponses)
-                    .build();
-            responses.add(response);
-        }
-        return responses;
-    }
-
-    public List<PackageTypesResponse> getAllPackagesType() {
-        List<PackageTypesResponse> responses = new ArrayList<>();
-        List<Packages> packages = packageRepository.findAll();
-        for (Packages pkg : packages) {
-            List<PackageTypesPriceResponse> priceResponseList = new ArrayList<>();
-            List<PackagePrice> packagePrices = packagePriceRepository.findPackagePriceByPackageId(pkg.getPackageId());
-            for (PackagePrice packagePrice : packagePrices) {
-                PackageTypesPriceResponse packageTypesPriceResponse = PackageTypesPriceResponse.builder()
-                        .minVolume(packagePrice.getMinVolume())
-                        .maxVolume(packagePrice.getMaxVolume())
-                        .price(packagePrice.getPrice())
-                        .build();
-                priceResponseList.add(packageTypesPriceResponse);
-            }
-            priceResponseList = priceResponseList.stream()
-                    .sorted(Comparator.comparingDouble(PackageTypesPriceResponse::getMinVolume))
-                    .collect(Collectors.toList());
-            List<PackageTypesConstructionContentResponse> constructionResponseList = new ArrayList<>();
-            List<PackageConstruction> packageConstructions = packageConstructionRepository.findByPackageId(pkg.getPackageId());
-            for (PackageConstruction packageConstruction : packageConstructions) {
-                PackageTypesConstructionContentResponse packageTypesConstructionContentResponse = PackageTypesConstructionContentResponse.builder()
-                        .content(packageConstruction.getContent())
-                        .price(packageConstruction.getPrice())
-                        .build();
-                constructionResponseList.add(packageTypesConstructionContentResponse);
-            }
-            PackageTypesResponse response = PackageTypesResponse.builder()
-                    .packageId(pkg.getPackageId())
-                    .packageType(pkg.getPackageType())
-                    .priceResponseList(priceResponseList)
-                    .constructionContentResponses(constructionResponseList)
-                    .build();
-            responses.add(response);
-        }
-        return responses;
-    }
+//    public List<PackageTypesResponse> getAllPackagesType() {
+//        List<PackageTypesResponse> responses = new ArrayList<>();
+//        List<Packages> packages = packageRepository.findAll();
+//        for (Packages pkg : packages) {
+//            List<PackageTypesPriceResponse> priceResponseList = new ArrayList<>();
+//            List<PackagePrice> packagePrices = packagePriceRepository.findPackagePriceByPackageId(pkg.getPackageId());
+//            for (PackagePrice packagePrice : packagePrices) {
+//                PackageTypesPriceResponse packageTypesPriceResponse = PackageTypesPriceResponse.builder()
+//                        .minVolume(packagePrice.getMinVolume())
+//                        .maxVolume(packagePrice.getMaxVolume())
+//                        .price(packagePrice.getPrice())
+//                        .build();
+//                priceResponseList.add(packageTypesPriceResponse);
+//            }
+//            priceResponseList = priceResponseList.stream()
+//                    .sorted(Comparator.comparingDouble(PackageTypesPriceResponse::getMinVolume))
+//                    .collect(Collectors.toList());
+//            List<PackageTypesConstructionContentResponse> constructionResponseList = new ArrayList<>();
+//            List<PackageConstruction> packageConstructions = packageConstructionRepository.findByPackageId(pkg.getPackageId());
+//            for (PackageConstruction packageConstruction : packageConstructions) {
+//                PackageTypesConstructionContentResponse packageTypesConstructionContentResponse = PackageTypesConstructionContentResponse.builder()
+//                        .content(packageConstruction.getContent())
+//                        .price(packageConstruction.getPrice())
+//                        .build();
+//                constructionResponseList.add(packageTypesConstructionContentResponse);
+//            }
+//            PackageTypesResponse response = PackageTypesResponse.builder()
+//                    .packageId(pkg.getPackageId())
+//                    .packageType(pkg.getPackageType())
+//                    .priceResponseList(priceResponseList)
+//                    .constructionContentResponses(constructionResponseList)
+//                    .build();
+//            responses.add(response);
+//        }
+//        return responses;
+//    }
 }

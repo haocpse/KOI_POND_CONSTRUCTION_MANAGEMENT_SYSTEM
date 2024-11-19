@@ -1,7 +1,6 @@
 package com.swp_group4.back_end.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -14,7 +13,15 @@ import lombok.experimental.FieldDefaults;
 public class ConstructionTaskStaff {
 
     @Id
-    ConstructionTaskStaffId id;
-    String staffName;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    String id;
+
+    @ManyToOne
+    @JoinColumn(name = "staff_id", nullable = false)
+    Staff staff;
+
+    @ManyToOne
+    @JoinColumn(name = "task_id", nullable = false)
+    ConstructionTasks task;
 
 }

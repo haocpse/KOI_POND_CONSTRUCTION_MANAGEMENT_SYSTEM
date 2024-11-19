@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.util.List;
+
 @Entity
 @Data
 @AllArgsConstructor
@@ -21,4 +23,6 @@ public class Staff {
     @JoinColumn(name = "account_id", nullable = false)
     Account account;
 
+    @OneToMany(mappedBy = "staff", cascade = CascadeType.ALL)
+    List<ConstructionTaskStaff> staffTasks;
 }
